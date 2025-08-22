@@ -17,7 +17,7 @@ def welcome():
 def generate_number():
     digits = list("123456789") + ["0"]  # vytvoříme seznam číslic (1–9 + 0)
     random.shuffle(digits)               # zamícháme pořadí
-    return digits[:4]   # : = copy        # vezmeme první 4 číslice (budou unikátní)
+    return digits[:4]   # : = copy        # vezmeme první 4 číslice (! budou unikátní !)
 
 def check_guess(secret, guess):
     bulls = sum(s == g for s, g in zip(secret, guess))  # porovnáme každou pozici
