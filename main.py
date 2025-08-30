@@ -7,6 +7,7 @@ email: mendlikova.monika@gmail.com
 
 sep = "-----------------------------------------------"
 
+
 import random
 from typing import List, Tuple
 
