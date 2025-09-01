@@ -8,15 +8,17 @@ email: mendlikova.monika@gmail.com
 import random
 from typing import List, Tuple
 
-SEP = "-----------------------------------------------"
+SEP = "-----------------------------------------------"  #oddělovač pro přehlednost výpisů
 
 def welcome() -> None:
     """Prints the welcome message for the Bulls and Cows game."""
-    print("Hi there!")
-    print(SEP)
-    print("I've generated a random 4 digit number for you.")
-    print("Let's play a bulls and cows game.")
-    print(SEP)
+    print(
+        "Hi there!\n"
+        f"{SEP}\n"
+        "I've generated a random 4-digit number for you.\n"
+        "Let's play a bulls and cows game.\n"
+        f"{SEP}"
+    )
 
 
 def generate_number(length: int = 4) -> List[str]:
@@ -29,7 +31,9 @@ def generate_number(length: int = 4) -> List[str]:
     Returns:
         List[str]: List of unique digits as strings.
     """
-    return random.sample("1234567890", length)
+    first_digit = random.choice("123456789")
+    remaining_digits = random.sample("0123456789".replace(first_digit, ""), length - 1)
+    return [first_digit] + remaining_digits
 
 
 def is_valid_guess(guess: str, length: int = 4) -> bool:
@@ -117,11 +121,13 @@ def play_game(length: int = 4) -> None:
     secret = generate_number(length)
     attempts = 0
 
-    print(f"Rules: Guess a {length}-digit number, digits are unique and cannot start with zero.")
-    print("A digit in the correct place is a bull.")
-    print("A correct digit in the wrong place is a cow.")
-    print("Try to guess it!")
-    print(SEP)
+    print(
+        f"Rules: Guess a {length}-digit number, digits are unique and cannot start with zero.\n"
+        "A digit in the correct place is a bull.\n"
+        "A correct digit in the wrong place is a cow.\n"
+        "Try to guess it!\n"
+        f"{SEP}"
+    )
 
     while True:
         guess = get_guess(length)
